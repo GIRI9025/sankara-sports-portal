@@ -3,7 +3,12 @@ import { Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Menu, Trophy, Medal, ChartNoAxesColumnIncreasing, Download, House, CalendarDays, Users, ArrowUpRight, Shield, X, Plus, Trash2, LogOut, FileText, Activity } from 'lucide-react';
 
-const api = axios.create({ baseURL:'/api' });
+// const api = axios.create({ baseURL:'/api' });
+const api = axios.create({
+  baseURL: import.meta.env.DEV
+    ? '/api'
+    : `${import.meta.env.VITE_API_URL}/api`
+});
 const season = '2026–27';
 const fallbackEvents = [
   {name:'Kabaddi',category:'Team Sport',division:'Men / Women',status:'Upcoming',description:'Raid, defence and team strategy.'},
